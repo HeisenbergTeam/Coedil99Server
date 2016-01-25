@@ -13,10 +13,13 @@
  */
 package com.coedil99.modello_di_dominio;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import javax.xml.bind.annotation.*;
 
 @XmlRootElement
-
 public class Pezzo {
 	public Pezzo() {
 	}
@@ -32,7 +35,7 @@ public class Pezzo {
 	private void setID(int value) {
 		this.ID = value;
 	}
-	
+	@XmlID
 	public int getID() {
 		return ID;
 	}
@@ -52,7 +55,8 @@ public class Pezzo {
 	public void setDescrizionePezzo(com.coedil99.modello_di_dominio.DescrizionePezzo value) {
 		this.descrizionePezzo = value;
 	}
-	@XmlTransient
+
+	@XmlIDREF
 	public com.coedil99.modello_di_dominio.DescrizionePezzo getDescrizionePezzo() {
 		return descrizionePezzo;
 	}
@@ -69,7 +73,8 @@ public class Pezzo {
 			}
 		}
 	}
-	@XmlTransient
+
+	@XmlIDREF
 	public com.coedil99.modello_di_dominio.RigaRDA getRigaRDA() {
 		return rigaRDA;
 	}

@@ -13,6 +13,12 @@
  */
 package com.coedil99.modello_di_dominio;
 
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+@XmlRootElement
 public class Destinazione {
 	public Destinazione() {
 	}
@@ -34,7 +40,7 @@ public class Destinazione {
 	private void setID(int value) {
 		this.ID = value;
 	}
-	
+	@XmlID
 	public int getID() {
 		return ID;
 	}
@@ -55,7 +61,7 @@ public class Destinazione {
 			}
 		}
 	}
-	
+	@XmlIDREF
 	public Ordine getOrdine() {
 		return ordine;
 	}

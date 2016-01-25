@@ -13,6 +13,12 @@
  */
 package com.coedil99.modello_di_dominio;
 
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+@XmlRootElement
 public class DescrizionePezzo {
 	public DescrizionePezzo() {
 	}
@@ -41,7 +47,8 @@ public class DescrizionePezzo {
 		}
 		
 	};
-	
+
+
 	private int ID;
 	
 	private Fornitore fornitore;
@@ -57,7 +64,8 @@ public class DescrizionePezzo {
 	private void setID(int value) {
 		this.ID = value;
 	}
-	
+
+    @XmlID
 	public int getID() {
 		return ID;
 	}
@@ -98,7 +106,7 @@ public class DescrizionePezzo {
 			value.descrizionePezzo.add(this);
 		}
 	}
-	
+	@XmlIDREF
 	public Fornitore getFornitore() {
 		return fornitore;
 	}
@@ -109,7 +117,8 @@ public class DescrizionePezzo {
 	public void setORM_Fornitore(Fornitore value) {
 		this.fornitore = value;
 	}
-	
+
+	@XmlTransient
 	private Fornitore getORM_Fornitore() {
 		return fornitore;
 	}
@@ -117,11 +126,11 @@ public class DescrizionePezzo {
 	private void setORM_LavorazionePezzo(java.util.Set value) {
 		this.ORM_lavorazionePezzo = value;
 	}
-	
+	@XmlTransient
 	private java.util.Set getORM_LavorazionePezzo() {
 		return ORM_lavorazionePezzo;
 	}
-	
+	@XmlTransient
 	public final com.coedil99.modello_di_dominio.LavorazionePezzoSetCollection lavorazionePezzo = new com.coedil99.modello_di_dominio.LavorazionePezzoSetCollection(this, _ormAdapter, ORMConstants.KEY_DESCRIZIONEPEZZO_LAVORAZIONEPEZZO, ORMConstants.KEY_MUL_MANY_TO_MANY);
 	
 	public String toString() {

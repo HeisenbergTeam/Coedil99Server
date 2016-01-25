@@ -13,6 +13,12 @@
  */
 package com.coedil99.modello_di_dominio;
 
+
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+@XmlRootElement
 public class Commessa {
 	public Commessa() {
 	}
@@ -80,7 +86,7 @@ public class Commessa {
 			value.commesse.add(this);
 		}
 	}
-	
+	@XmlIDREF
 	public Ordine getOrdine() {
 		return ordine;
 	}
@@ -91,7 +97,7 @@ public class Commessa {
 	public void setORM_Ordine(Ordine value) {
 		this.ordine = value;
 	}
-	
+	@XmlTransient
 	private Ordine getORM_Ordine() {
 		return ordine;
 	}
@@ -108,7 +114,7 @@ public class Commessa {
 			}
 		}
 	}
-	
+	@XmlTransient
 	public com.coedil99.modello_di_dominio.Distinta getDistinta() {
 		return distinta;
 	}

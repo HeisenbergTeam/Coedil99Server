@@ -13,6 +13,12 @@
  */
 package com.coedil99.modello_di_dominio;
 
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+@XmlRootElement
 public class RigaDistinta {
 	public RigaDistinta() {
 	}
@@ -51,7 +57,7 @@ public class RigaDistinta {
 	private void setID(int value) {
 		this.ID = value;
 	}
-	
+	@XmlID
 	public int getID() {
 		return ID;
 	}
@@ -71,7 +77,7 @@ public class RigaDistinta {
 	public void setPezzo(Pezzo value) {
 		this.pezzo = value;
 	}
-	
+	@XmlIDREF
 	public Pezzo getPezzo() {
 		return pezzo;
 	}
@@ -84,7 +90,7 @@ public class RigaDistinta {
 			value.righeDistinta.add(this);
 		}
 	}
-	
+	@XmlIDREF
 	public Distinta getDistinta() {
 		return distinta;
 	}
@@ -95,7 +101,7 @@ public class RigaDistinta {
 	public void setORM_Distinta(Distinta value) {
 		this.distinta = value;
 	}
-	
+	@XmlTransient
 	private Distinta getORM_Distinta() {
 		return distinta;
 	}
@@ -103,7 +109,7 @@ public class RigaDistinta {
 	public void setLavorazionePezzo(com.coedil99.modello_di_dominio.LavorazionePezzo value) {
 		this.lavorazionePezzo = value;
 	}
-	
+	@XmlIDREF
 	public com.coedil99.modello_di_dominio.LavorazionePezzo getLavorazionePezzo() {
 		return lavorazionePezzo;
 	}

@@ -13,6 +13,12 @@
  */
 package com.coedil99.modello_di_dominio;
 
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+@XmlRootElement
 public class Distinta {
 	public Distinta() {
 	}
@@ -49,7 +55,7 @@ public class Distinta {
 	private void setID(int value) {
 		this.ID = value;
 	}
-	
+	@XmlID
 	public int getID() {
 		return ID;
 	}
@@ -102,7 +108,7 @@ public class Distinta {
 			}
 		}
 	}
-	
+	@XmlIDREF
 	public Commessa getCommessa() {
 		return commessa;
 	}
@@ -110,7 +116,7 @@ public class Distinta {
 	private void setORM_RigheDistinta(java.util.Set value) {
 		this.ORM_righeDistinta = value;
 	}
-	
+	@XmlTransient
 	private java.util.Set getORM_RigheDistinta() {
 		return ORM_righeDistinta;
 	}

@@ -3,11 +3,9 @@ package com.coedil99.rest;
 import com.coedil99.modello_di_dominio.DAOFactory;
 import org.orm.PersistentException;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 
 /**
@@ -18,9 +16,26 @@ public class Pezzo {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public com.coedil99.modello_di_dominio.Pezzo getIt() {
+    public com.coedil99.modello_di_dominio.Pezzo[] getAll()
+    {
         try {
-            com.coedil99.modello_di_dominio.Pezzo p = DAOFactory.getDAOFactory().getPezzoDAO().getPezzoByORMID(1);
+
+            com.coedil99.modello_di_dominio.Pezzo[] list = DAOFactory.getDAOFactory().getPezzoDAO().listPezzoByQuery(null,null);
+            return list;
+
+        } catch (PersistentException e) {
+
+            e.printStackTrace();
+        }
+        return new com.coedil99.modello_di_dominio.Pezzo[0];
+    }
+
+    @GET
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public com.coedil99.modello_di_dominio.Pezzo getIt(@PathParam("id") int cId) {
+        try {
+            com.coedil99.modello_di_dominio.Pezzo p = DAOFactory.getDAOFactory().getPezzoDAO().getPezzoByORMID(cId);
             return p;
 
         } catch (PersistentException e) {
@@ -30,11 +45,19 @@ public class Pezzo {
         return null;
     }
 
-    @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getJson()
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response getPezzo(com.coedil99.modello_di_dominio.Pezzo p)
     {
-        return "ciao";
+        try {
+
+            DAOFactory.getDAOFactory().getPezzoDAO().save(p);
+
+        }catch (PersistentException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
 }

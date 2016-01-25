@@ -13,6 +13,9 @@
  */
 package com.coedil99.modello_di_dominio;
 
+import javax.xml.bind.annotation.*;
+
+@XmlRootElement
 public class RigaRDA {
 	public RigaRDA() {
 	}
@@ -33,7 +36,8 @@ public class RigaRDA {
 		}
 		
 	};
-	
+
+
 	private int ID;
 	
 	private Pezzo pezzo;
@@ -45,7 +49,7 @@ public class RigaRDA {
 	private void setID(int value) {
 		this.ID = value;
 	}
-	
+    @XmlID
 	public int getID() {
 		return ID;
 	}
@@ -70,7 +74,7 @@ public class RigaRDA {
 			value.righeRDA.add(this);
 		}
 	}
-	
+	@XmlIDREF
 	public RDA getRda() {
 		return rda;
 	}
@@ -81,7 +85,8 @@ public class RigaRDA {
 	public void setORM_Rda(RDA value) {
 		this.rda = value;
 	}
-	
+
+	@XmlTransient
 	private RDA getORM_Rda() {
 		return rda;
 	}
@@ -98,7 +103,7 @@ public class RigaRDA {
 			}
 		}
 	}
-	
+	@XmlIDREF
 	public Pezzo getPezzo() {
 		return pezzo;
 	}
